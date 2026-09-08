@@ -1,0 +1,33 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+.venv/
+venv/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Node / Vite
+node_modules/
+dist/
+.vite/
+ui/build/
+
+# Environment
+.env
+.env.local
+*.env.local
+scripts/deploy.env
+
+# Editor
+.idea/
+*.swp
+.DS_Store
+
+# Uploads
+uploads/
+
+# Docker
+.docker/

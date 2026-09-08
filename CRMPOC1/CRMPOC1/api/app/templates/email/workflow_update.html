@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<body style="font-family: Arial, sans-serif; line-height: 1.6; color: #1e293b;">
+  <p>Dear {{ recipient_name }},</p>
+  <p>{{ intro }}</p>
+  <table style="border-collapse: collapse; margin: 16px 0; width: 100%; max-width: 640px;">
+    {{ details_html }}
+  </table>
+  {{ extra_message_html }}
+  <p>
+    For assistance, contact our helpdesk at
+    <a href="mailto:{{ helpdesk_email }}">{{ helpdesk_email }}</a>
+    or call <strong>{{ toll_free_number }}</strong>.
+  </p>
+  <p>Thank you,<br>{{ from_name }}</p>
+</body>
+</html>

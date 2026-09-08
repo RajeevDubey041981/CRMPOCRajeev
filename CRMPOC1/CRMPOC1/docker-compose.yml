@@ -1,0 +1,60 @@
+services:
+  api:
+    build: ./api
+    restart: unless-stopped
+    environment:
+      DATABASE_BACKEND: ${DATABASE_BACKEND:-mysql}
+      SQLSERVER_DATABASE_URL: ${SQLSERVER_DATABASE_URL:-Server=host.docker.internal,1433;Database=indcool;User Id=api_user;Password=test123;Encrypt=no;TrustServerCertificate=yes;Driver=ODBC Driver 18 for SQL Server;}
+      MYSQL_DATABASE_URL: ${MYSQL_DATABASE_URL:-mysql+mysqlconnector://root:Sandhya%231981@host.docker.internal:3306/indcool}
+      JWT_SECRET: ${JWT_SECRET:-change-me-in-production-please}
+      JWT_ALGORITHM: ${JWT_ALGORITHM:-HS256}
+      JWT_EXPIRE_MINUTES: ${JWT_EXPIRE_MINUTES:-480}
+      UPLOAD_DIR: ${UPLOAD_DIR:-/app/uploads}
+      CORS_ORIGINS: ${CORS_ORIGINS:-http://localhost:5173}
+      APP_PUBLIC_URL: ${APP_PUBLIC_URL:-http://localhost:5173}
+      EMAIL_ENABLED: ${EMAIL_ENABLED:-false}
+      SMTP_HOST: ${SMTP_HOST:-smtp.gmail.com}
+      SMTP_PORT: ${SMTP_PORT:-587}
+      SMTP_USER: ${SMTP_USER:-}
+      SMTP_PASSWORD: ${SMTP_PASSWORD:-}
+      SMTP_FROM: ${SMTP_FROM:-}
+      SMTP_FROM_NAME: ${SMTP_FROM_NAME:-Indcool Service}
+      SMTP_USE_TLS: ${SMTP_USE_TLS:-true}
+      SMTP_USE_AUTH: ${SMTP_USE_AUTH:-true}
+      # Configure these with credentials from an authorised GST Suvidha
+      # Provider. GST's public web search is CAPTCHA protected and is not a
+      # server-to-server API.
+      GST_PROVIDER_URL: ${GST_PROVIDER_URL:-}
+      GST_PROVIDER_API_KEY: ${GST_PROVIDER_API_KEY:-}
+      GST_PROVIDER_AUTHORIZATION: ${GST_PROVIDER_AUTHORIZATION:-}
+      GST_LOOKUP_ENABLED: ${GST_LOOKUP_ENABLED:-false}
+      SEED_ADMIN_EMAIL: ${SEED_ADMIN_EMAIL:-admin@indcool.com}
+      SEED_ADMIN_PASSWORD: ${SEED_ADMIN_PASSWORD:-admin123}
+      SEED_ADMIN_NAME: ${SEED_ADMIN_NAME:-Administrator}
+    ports:
+      - "${API_PORT:-8000}:8000"
+    volumes:
+      - ./api:/app
+      - api_uploads:/app/uploads
+    command: >
+      sh -c "python -m app.seed &&
+             uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload"
+
+  ui:
+    build: ./ui
+    restart: unless-stopped
+    depends_on:
+      - api
+    environment:
+      VITE_API_BASE_URL: ${VITE_API_BASE_URL:-http://localhost:8000}
+      VITE_GST_LOOKUP_ENABLED: ${VITE_GST_LOOKUP_ENABLED:-false}
+    ports:
+      - "${UI_PORT:-5173}:5173"
+    volumes:
+      - ./ui:/app
+      - ui_node_modules:/app/node_modules
+    command: sh -c "npm install && npm run dev -- --host 0.0.0.0"
+
+volumes:
+  api_uploads:
+  ui_node_modules:

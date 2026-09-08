@@ -1,0 +1,147 @@
+{
+  "generated_at": "2026-08-29T13:07:18.277Z",
+  "fixture": {
+    "run_id": "20260829130611",
+    "order_id": 23,
+    "order_no": "E2E-SRV-20260829130611",
+    "customer_name": "E2E Service Customer 20260829130611",
+    "customer_mobile": "9829130611",
+    "serials": [
+      "E2E-SN-1-20260829130611",
+      "E2E-SN-2-20260829130611"
+    ],
+    "item_code": "8908012210481",
+    "item_name": "SPLIT AC IDCACS24K5",
+    "engineer_email": "ravi@indcool.com",
+    "engineer_name": "Ravi Kumar",
+    "engineer_id": 2,
+    "callcenter_email": "callcenter@indcool.com",
+    "callcenter_password": "callcenter123",
+    "admin_email": "admin@indcool.com",
+    "admin_password": "admin123",
+    "engineer_password": "engineer123",
+    "created_at": "2026-08-29T13:06:11.671128+00:00"
+  },
+  "service_id": 3,
+  "base_url": "https://indcoolapplainces.com",
+  "api_url": "https://indcoolapplainces.com",
+  "headless": true,
+  "results": [
+    {
+      "step": "Setup isolated order + 2 installed serials",
+      "ok": true,
+      "detail": "order E2E-SRV-20260829130611",
+      "at": "2026-08-29T13:06:33.703Z"
+    },
+    {
+      "step": "Callcenter login",
+      "ok": true,
+      "detail": "callcenter@indcool.com",
+      "at": "2026-08-29T13:06:45.007Z"
+    },
+    {
+      "step": "Callcenter creates service request",
+      "ok": true,
+      "detail": "service #3",
+      "at": "2026-08-29T13:06:46.015Z"
+    },
+    {
+      "step": "API: service exists after create",
+      "ok": true,
+      "detail": "status=New",
+      "at": "2026-08-29T13:06:47.067Z"
+    },
+    {
+      "step": "Admin login",
+      "ok": true,
+      "detail": "",
+      "at": "2026-08-29T13:06:48.212Z"
+    },
+    {
+      "step": "Admin verifies order",
+      "ok": true,
+      "detail": "2 units, order=E2E-SRV-20260829130611",
+      "at": "2026-08-29T13:06:50.382Z"
+    },
+    {
+      "step": "Admin assigns both serials to engineer",
+      "ok": true,
+      "detail": "Ravi Kumar",
+      "at": "2026-08-29T13:06:52.474Z"
+    },
+    {
+      "step": "Legacy assign dropdown hidden when per-unit active",
+      "ok": true,
+      "detail": "",
+      "at": "2026-08-29T13:06:52.612Z"
+    },
+    {
+      "step": "Engineer login",
+      "ok": true,
+      "detail": "",
+      "at": "2026-08-29T13:06:53.875Z"
+    },
+    {
+      "step": "Engineer verifies all serials",
+      "ok": true,
+      "detail": "",
+      "at": "2026-08-29T13:06:55.634Z"
+    },
+    {
+      "step": "Engineer submits observations (both serials)",
+      "ok": true,
+      "detail": "",
+      "at": "2026-08-29T13:06:58.803Z"
+    },
+    {
+      "step": "Admin approves both serials",
+      "ok": true,
+      "detail": "",
+      "at": "2026-08-29T13:07:04.114Z"
+    },
+    {
+      "step": "Engineer Step 4 complete (serial 1)",
+      "ok": true,
+      "detail": "E2E-SN-1-20260829130611",
+      "at": "2026-08-29T13:07:07.293Z"
+    },
+    {
+      "step": "Engineer Step 5 payment (serial 1, Cash)",
+      "ok": true,
+      "detail": "E2E-SN-1-20260829130611",
+      "at": "2026-08-29T13:07:08.800Z"
+    },
+    {
+      "step": "Engineer completes + requests payment (both serials)",
+      "ok": true,
+      "detail": "",
+      "at": "2026-08-29T13:07:11.761Z"
+    },
+    {
+      "step": "Admin approves payments (both serials)",
+      "ok": true,
+      "detail": "",
+      "at": "2026-08-29T13:07:16.601Z"
+    },
+    {
+      "step": "Admin closes service request (UI POST)",
+      "ok": true,
+      "detail": "",
+      "at": "2026-08-29T13:07:17.489Z"
+    },
+    {
+      "step": "Admin closes service request",
+      "ok": true,
+      "detail": "status=Closed",
+      "at": "2026-08-29T13:07:17.896Z"
+    },
+    {
+      "step": "Final API snapshot",
+      "ok": true,
+      "detail": "{\"status\":\"Closed\",\"units\":[{\"serial\":\"E2E-SN-1-20260829130611\",\"unit_status\":\"Closed\"},{\"serial\":\"E2E-SN-2-20260829130611\",\"unit_status\":\"Closed\"}]}",
+      "at": "2026-08-29T13:07:18.011Z"
+    }
+  ],
+  "passed": 19,
+  "failed": 0
+}

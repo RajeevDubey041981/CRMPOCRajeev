@@ -1,0 +1,437 @@
+{
+  "generated_at": "2026-08-29T12:49:26.788807+00:00",
+  "local_alembic": "0023_service_unit_lifecycle",
+  "prod_alembic": "0023_service_unit_lifecycle",
+  "alembic_in_sync": true,
+  "summary": {
+    "missing_tables": 0,
+    "extra_tables": 0,
+    "missing_columns": 0,
+    "extra_columns": 0,
+    "cosmetic_mismatches": 80,
+    "review_mismatches": 26,
+    "actionable_mismatches": 0,
+    "needs_migration": false
+  },
+  "missing_tables": [],
+  "missing_columns": [],
+  "actionable_mismatches": [],
+  "review_mismatches": [
+    {
+      "table": "calls",
+      "column": "call_datetime",
+      "local": {
+        "type": "datetime(6)",
+        "nullable": "NO",
+        "default": null,
+        "extra": ""
+      },
+      "prod": {
+        "type": "datetime",
+        "nullable": "YES",
+        "default": null,
+        "extra": ""
+      }
+    },
+    {
+      "table": "calls",
+      "column": "customer_name",
+      "local": {
+        "type": "varchar(255)",
+        "nullable": "YES",
+        "default": null,
+        "extra": ""
+      },
+      "prod": {
+        "type": "varchar(255)",
+        "nullable": "NO",
+        "default": null,
+        "extra": ""
+      }
+    },
+    {
+      "table": "calls",
+      "column": "priority",
+      "local": {
+        "type": "varchar(20)",
+        "nullable": "NO",
+        "default": "medium",
+        "extra": ""
+      },
+      "prod": {
+        "type": "varchar(50)",
+        "nullable": "YES",
+        "default": null,
+        "extra": ""
+      }
+    },
+    {
+      "table": "calls",
+      "column": "status",
+      "local": {
+        "type": "varchar(30)",
+        "nullable": "YES",
+        "default": null,
+        "extra": ""
+      },
+      "prod": {
+        "type": "varchar(50)",
+        "nullable": "NO",
+        "default": null,
+        "extra": ""
+      }
+    },
+    {
+      "table": "claims",
+      "column": "status",
+      "local": {
+        "type": "varchar(50)",
+        "nullable": "NO",
+        "default": "Processing",
+        "extra": ""
+      },
+      "prod": {
+        "type": "varchar(50)",
+        "nullable": "NO",
+        "default": null,
+        "extra": ""
+      }
+    },
+    {
+      "table": "complaints",
+      "column": "send_sms",
+      "local": {
+        "type": "tinyint(1)",
+        "nullable": "NO",
+        "default": "1",
+        "extra": ""
+      },
+      "prod": {
+        "type": "tinyint(1)",
+        "nullable": "NO",
+        "default": null,
+        "extra": ""
+      }
+    },
+    {
+      "table": "complaints",
+      "column": "source",
+      "local": {
+        "type": "varchar(50)",
+        "nullable": "NO",
+        "default": "callcenter",
+        "extra": ""
+      },
+      "prod": {
+        "type": "varchar(50)",
+        "nullable": "NO",
+        "default": null,
+        "extra": ""
+      }
+    },
+    {
+      "table": "complaints",
+      "column": "status",
+      "local": {
+        "type": "varchar(50)",
+        "nullable": "NO",
+        "default": "Pending",
+        "extra": ""
+      },
+      "prod": {
+        "type": "varchar(50)",
+        "nullable": "NO",
+        "default": null,
+        "extra": ""
+      }
+    },
+    {
+      "table": "installation_requests",
+      "column": "status",
+      "local": {
+        "type": "varchar(50)",
+        "nullable": "NO",
+        "default": "Pending",
+        "extra": ""
+      },
+      "prod": {
+        "type": "varchar(50)",
+        "nullable": "NO",
+        "default": null,
+        "extra": ""
+      }
+    },
+    {
+      "table": "order_items",
+      "column": "free_service_count",
+      "local": {
+        "type": "int",
+        "nullable": "NO",
+        "default": "0",
+        "extra": ""
+      },
+      "prod": {
+        "type": "int",
+        "nullable": "NO",
+        "default": null,
+        "extra": ""
+      }
+    },
+    {
+      "table": "order_items",
+      "column": "installation_status",
+      "local": {
+        "type": "varchar(50)",
+        "nullable": "NO",
+        "default": "Not Requested",
+        "extra": ""
+      },
+      "prod": {
+        "type": "varchar(50)",
+        "nullable": "NO",
+        "default": null,
+        "extra": ""
+      }
+    },
+    {
+      "table": "order_items",
+      "column": "item_qty",
+      "local": {
+        "type": "int",
+        "nullable": "NO",
+        "default": "1",
+        "extra": ""
+      },
+      "prod": {
+        "type": "int",
+        "nullable": "NO",
+        "default": null,
+        "extra": ""
+      }
+    },
+    {
+      "table": "order_items",
+      "column": "service_consume_count",
+      "local": {
+        "type": "int",
+        "nullable": "NO",
+        "default": "0",
+        "extra": ""
+      },
+      "prod": {
+        "type": "int",
+        "nullable": "NO",
+        "default": null,
+        "extra": ""
+      }
+    },
+    {
+      "table": "orders",
+      "column": "status",
+      "local": {
+        "type": "varchar(50)",
+        "nullable": "NO",
+        "default": "Pending",
+        "extra": ""
+      },
+      "prod": {
+        "type": "varchar(50)",
+        "nullable": "NO",
+        "default": null,
+        "extra": ""
+      }
+    },
+    {
+      "table": "permissions",
+      "column": "can_create",
+      "local": {
+        "type": "tinyint(1)",
+        "nullable": "NO",
+        "default": "0",
+        "extra": ""
+      },
+      "prod": {
+        "type": "tinyint(1)",
+        "nullable": "NO",
+        "default": null,
+        "extra": ""
+      }
+    },
+    {
+      "table": "permissions",
+      "column": "can_delete",
+      "local": {
+        "type": "tinyint(1)",
+        "nullable": "NO",
+        "default": "0",
+        "extra": ""
+      },
+      "prod": {
+        "type": "tinyint(1)",
+        "nullable": "NO",
+        "default": null,
+        "extra": ""
+      }
+    },
+    {
+      "table": "permissions",
+      "column": "can_edit",
+      "local": {
+        "type": "tinyint(1)",
+        "nullable": "NO",
+        "default": "0",
+        "extra": ""
+      },
+      "prod": {
+        "type": "tinyint(1)",
+        "nullable": "NO",
+        "default": null,
+        "extra": ""
+      }
+    },
+    {
+      "table": "permissions",
+      "column": "can_export",
+      "local": {
+        "type": "tinyint(1)",
+        "nullable": "NO",
+        "default": "0",
+        "extra": ""
+      },
+      "prod": {
+        "type": "tinyint(1)",
+        "nullable": "NO",
+        "default": null,
+        "extra": ""
+      }
+    },
+    {
+      "table": "permissions",
+      "column": "can_view",
+      "local": {
+        "type": "tinyint(1)",
+        "nullable": "NO",
+        "default": "0",
+        "extra": ""
+      },
+      "prod": {
+        "type": "tinyint(1)",
+        "nullable": "NO",
+        "default": null,
+        "extra": ""
+      }
+    },
+    {
+      "table": "projects",
+      "column": "status",
+      "local": {
+        "type": "varchar(30)",
+        "nullable": "NO",
+        "default": "Draft",
+        "extra": ""
+      },
+      "prod": {
+        "type": "varchar(30)",
+        "nullable": "NO",
+        "default": null,
+        "extra": ""
+      }
+    },
+    {
+      "table": "serial_history_events",
+      "column": "metadata_json",
+      "local": {
+        "type": "json",
+        "nullable": "YES",
+        "default": null,
+        "extra": ""
+      },
+      "prod": {
+        "type": "text",
+        "nullable": "YES",
+        "default": null,
+        "extra": ""
+      }
+    },
+    {
+      "table": "users",
+      "column": "is_active",
+      "local": {
+        "type": "tinyint(1)",
+        "nullable": "NO",
+        "default": "1",
+        "extra": ""
+      },
+      "prod": {
+        "type": "tinyint(1)",
+        "nullable": "NO",
+        "default": null,
+        "extra": ""
+      }
+    },
+    {
+      "table": "users",
+      "column": "role",
+      "local": {
+        "type": "varchar(100)",
+        "nullable": "NO",
+        "default": "callcenter",
+        "extra": ""
+      },
+      "prod": {
+        "type": "varchar(100)",
+        "nullable": "NO",
+        "default": null,
+        "extra": ""
+      }
+    },
+    {
+      "table": "vendors",
+      "column": "is_active",
+      "local": {
+        "type": "tinyint(1)",
+        "nullable": "NO",
+        "default": "1",
+        "extra": ""
+      },
+      "prod": {
+        "type": "tinyint(1)",
+        "nullable": "NO",
+        "default": null,
+        "extra": ""
+      }
+    },
+    {
+      "table": "workflow_tasks",
+      "column": "sequence",
+      "local": {
+        "type": "int",
+        "nullable": "NO",
+        "default": "1",
+        "extra": ""
+      },
+      "prod": {
+        "type": "int",
+        "nullable": "NO",
+        "default": null,
+        "extra": ""
+      }
+    },
+    {
+      "table": "workflow_tasks",
+      "column": "status",
+      "local": {
+        "type": "varchar(20)",
+        "nullable": "NO",
+        "default": "Pending",
+        "extra": ""
+      },
+      "prod": {
+        "type": "varchar(20)",
+        "nullable": "NO",
+        "default": null,
+        "extra": ""
+      }
+    }
+  ]
+}

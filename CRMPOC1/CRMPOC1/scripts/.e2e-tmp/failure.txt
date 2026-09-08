@@ -1,0 +1,59 @@
+Indcool CRM
+Service & Operations
+Vendor Dashboard
+Service Requests
+Order List
+Installation Requests
+vendor1
+vendor
+Logout
+Create Order
+Row 1: Serial Number 1 is required for this item code
+ORDER DETAILS
+Order No / GEM No
+Order Date
+Oem Bill No
+CUSTOMER INFORMATION
+Customer Name
+Customer Contact
+Customer Email
+Customer City
+Customer State
+Customer Address
+VENDOR & DELIVERY
+Vendor Name *
+
+Vendor information is auto-filled from your logged-in account.
+
+Delivery Status
+
+Can be updated after the OEM Bill is available.
+
+Courier
+Expected Date of Delivery
+LRN No
+Vendor Bill No
+
+Auto-populated after OEM Bill is updated
+
+Vendor Bill Date
+
+Auto-populated after OEM Bill is updated
+
+Order Document *
+
+Admin can view and download this document from the order detail page.
+
+ADD ITEMS
++ New
+Remove
+Item Name *
+Item Qty *
+PCB Warranty *
+Component Warranty *
+Machine Warranty *
+Free Service *
+Dry Free Service *
+Wet Free Service *
+Reset
+Submit

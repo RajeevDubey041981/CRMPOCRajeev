@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<body style="font-family: Arial, sans-serif; color: #1e293b; line-height: 1.5;">
+  <p>Hello {{ engineer_name }},</p>
+  <p>
+    You have been assigned service units for request <strong>{{ request_no }}</strong>.
+  </p>
+  <table style="border-collapse: collapse; margin: 16px 0; width: 100%; max-width: 640px;">
+    <tr>
+      <td style="padding: 6px 8px; border: 1px solid #e2e8f0;"><strong>Order No</strong></td>
+      <td style="padding: 6px 8px; border: 1px solid #e2e8f0;">{{ order_no }}</td>
+    </tr>
+    <tr>
+      <td style="padding: 6px 8px; border: 1px solid #e2e8f0;"><strong>Customer</strong></td>
+      <td style="padding: 6px 8px; border: 1px solid #e2e8f0;">{{ customer_name }}</td>
+    </tr>
+    <tr>
+      <td style="padding: 6px 8px; border: 1px solid #e2e8f0;"><strong>Address</strong></td>
+      <td style="padding: 6px 8px; border: 1px solid #e2e8f0;">{{ customer_address }}</td>
+    </tr>
+    <tr>
+      <td style="padding: 6px 8px; border: 1px solid #e2e8f0;"><strong>Quantity Assigned</strong></td>
+      <td style="padding: 6px 8px; border: 1px solid #e2e8f0;">{{ quantity_assigned }}</td>
+    </tr>
+  </table>
+  <p><strong>Assigned units</strong></p>
+  <div>{{ units_html }}</div>
+  <p style="margin-top: 16px;"><strong>Service details:</strong> {{ problem_description }}</p>
+  <p>Please log in to Indcool CRM to review your assigned units.</p>
+  <p>Thank you,<br>Indcool Service Team</p>
+</body>
+</html>

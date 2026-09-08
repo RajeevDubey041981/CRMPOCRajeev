@@ -1,0 +1,11 @@
+locator.click: Error: strict mode violation: getByRole('button', { name: 'Approve' }) resolved to 4 elements:
+    1) <button type="button" class="rounded-md bg-orange-500 px-3 py-2 text-sm text-white">Approve all pending (2)</button> aka getByRole('button', { name: 'Approve all pending (2)' })
+    2) <button type="button" class="rounded-md bg-orange-500 px-3 py-1.5 text-xs text-white">Review & approve</button> aka getByRole('button', { name: 'Review & approve' }).first()
+    3) <button type="button" class="rounded-md bg-orange-500 px-3 py-1.5 text-xs text-white">Review & approve</button> aka getByRole('button', { name: 'Review & approve' }).nth(1)
+    4) <button type="button" class="rounded-md bg-orange-500 px-4 py-2 text-sm text-white">Approve</button> aka getByRole('button', { name: 'Approve', exact: true })
+
+Call log:
+  - waiting for getByRole('button', { name: 'Approve' })
+
+    at adminApproveUnit (C:\crmpoc\CRMPOC1\CRMPOC1\scripts\e2e-service-unit-flow.mjs:151:55)
+    at async main (C:\crmpoc\CRMPOC1\CRMPOC1\scripts\e2e-service-unit-flow.mjs:308:7)

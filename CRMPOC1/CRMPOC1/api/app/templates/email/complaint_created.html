@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<body style="font-family: Arial, sans-serif; line-height: 1.5; color: #1e293b;">
+  <p>Hello {{ customer_name }},</p>
+  <p>We have registered your request with Indcool.</p>
+  <table style="border-collapse: collapse; margin: 16px 0;">
+    <tr><td style="padding: 4px 12px 4px 0; color: #64748b;">Reference number</td><td><strong>{{ comp_no }}</strong></td></tr>
+    <tr><td style="padding: 4px 12px 4px 0; color: #64748b;">Type</td><td>{{ query_type }}</td></tr>
+    <tr><td style="padding: 4px 12px 4px 0; color: #64748b;">Status</td><td>{{ status }}</td></tr>
+    <tr><td style="padding: 4px 12px 4px 0; color: #64748b;">Mobile</td><td>{{ customer_mobile }}</td></tr>
+  </table>
+  <p>{{ problem_summary }}</p>
+  <p>Our team will review your request and contact you shortly.</p>
+  <p>Thank you,<br>{{ from_name }}</p>
+</body>
+</html>

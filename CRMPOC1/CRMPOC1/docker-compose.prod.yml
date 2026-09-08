@@ -1,0 +1,53 @@
+services:
+  api:
+    image: crmpoc1-api:latest
+    build:
+      context: ./api
+      dockerfile: Dockerfile
+    restart: unless-stopped
+    environment:
+      DATABASE_BACKEND: ${DATABASE_BACKEND:-mysql}
+      SQLSERVER_DATABASE_URL: ${SQLSERVER_DATABASE_URL:-Server=host.docker.internal,1433;Database=indcool;User Id=api_user;Password=test123;Encrypt=no;TrustServerCertificate=yes;Driver=ODBC Driver 18 for SQL Server;}
+      MYSQL_DATABASE_URL: ${MYSQL_DATABASE_URL:-mysql+mysqlconnector://root:password@host.docker.internal:3306/indcool}
+      JWT_SECRET: ${JWT_SECRET}
+      JWT_ALGORITHM: ${JWT_ALGORITHM:-HS256}
+      JWT_EXPIRE_MINUTES: ${JWT_EXPIRE_MINUTES:-480}
+      UPLOAD_DIR: ${UPLOAD_DIR:-/app/uploads}
+      CORS_ORIGINS: ${CORS_ORIGINS:-http://localhost}
+      APP_PUBLIC_URL: ${APP_PUBLIC_URL:-}
+      EMAIL_ENABLED: ${EMAIL_ENABLED:-false}
+      SMTP_HOST: ${SMTP_HOST:-smtp.gmail.com}
+      SMTP_PORT: ${SMTP_PORT:-587}
+      SMTP_USER: ${SMTP_USER:-}
+      SMTP_PASSWORD: ${SMTP_PASSWORD:-}
+      SMTP_FROM: ${SMTP_FROM:-}
+      SMTP_FROM_NAME: ${SMTP_FROM_NAME:-Indcool}
+      SMTP_USE_TLS: ${SMTP_USE_TLS:-true}
+      SMTP_USE_AUTH: ${SMTP_USE_AUTH:-true}
+      SEED_ADMIN_EMAIL: ${SEED_ADMIN_EMAIL:-admin@indcool.com}
+      SEED_ADMIN_PASSWORD: ${SEED_ADMIN_PASSWORD:-change-this-password}
+      SEED_ADMIN_NAME: ${SEED_ADMIN_NAME:-Administrator}
+    volumes:
+      - api_uploads:/app/uploads
+    expose:
+      - "8000"
+    command: >
+      sh -c "alembic upgrade head &&
+             python -m app.seed &&
+             uvicorn app.main:app --host 0.0.0.0 --port 8000"
+
+  ui:
+    image: crmpoc1-ui-prod:latest
+    build:
+      context: ./ui
+      dockerfile: Dockerfile.prod
+      args:
+        VITE_API_BASE_URL: ${VITE_API_BASE_URL:-}
+    restart: unless-stopped
+    depends_on:
+      - api
+    ports:
+      - "${UI_PORT:-80}:80"
+
+volumes:
+  api_uploads:

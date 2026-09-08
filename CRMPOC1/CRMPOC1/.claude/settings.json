@@ -1,0 +1,10 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(curl -s -o /dev/null -w \"api:%{http_code}\\\\n\" http://localhost:8010/docs)",
+      "Bash(curl -s -o /dev/null -w \"ui:%{http_code}\\\\n\" http://localhost:5173/)",
+      "Bash(curl -s -X POST http://localhost:8010/api/auth/login -H \"Content-Type: application/json\" -d '{\"email\":\"vendor@indcool.com\",\"password\":\"vendor123\"}')",
+      "Bash(python3 -m json.tool)"
+    ]
+  }
+}

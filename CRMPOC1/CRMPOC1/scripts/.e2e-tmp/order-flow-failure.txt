@@ -1,0 +1,8 @@
+Indcool CRM
+
+Sign in to continue
+
+Email
+Password
+Sign in
+default: admin@indcool.com / admin123

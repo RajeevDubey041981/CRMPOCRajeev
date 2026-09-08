@@ -1,0 +1,86 @@
+import { useCallback, useEffect, useState } from "react";
+import { Outlet } from "react-router-dom";
+
+import { fetchPendingActions, markPendingActionsRead } from "../api/pendingActions.js";
+import { useAuth } from "../auth/AuthContext.jsx";
+import PendingActionsModal from "../components/PendingActionsModal.jsx";
+import CallcenterGuard from "./CallcenterGuard.jsx";
+import Sidebar from "./Sidebar.jsx";
+import Topbar from "./Topbar.jsx";
+
+let _collapsed = false;
+
+export default function Layout() {
+  const { user } = useAuth();
+  const [collapsed, setCollapsed] = useState(_collapsed);
+  const [pendingItems, setPendingItems] = useState([]);
+  const [pendingTotal, setPendingTotal] = useState(0);
+  const [modalOpen, setModalOpen] = useState(false);
+  const [loadingPending, setLoadingPending] = useState(false);
+
+  function toggle() {
+    _collapsed = !_collapsed;
+    setCollapsed(_collapsed);
+  }
+
+  const loadPendingActions = useCallback(async (autoOpen = false) => {
+    if (!user) return;
+    setLoadingPending(true);
+    try {
+      const data = await fetchPendingActions(15);
+      setPendingItems(data.items || []);
+      setPendingTotal(data.total || 0);
+      if (autoOpen && (data.total || 0) > 0) {
+        setModalOpen(true);
+      }
+    } catch {
+      setPendingItems([]);
+      setPendingTotal(0);
+    } finally {
+      setLoadingPending(false);
+    }
+  }, [user]);
+
+  useEffect(() => {
+    loadPendingActions(true);
+  }, [loadPendingActions]);
+
+  async function handleMarkRead(ids) {
+    if (!ids?.length) return;
+    try {
+      await markPendingActionsRead(ids);
+      await loadPendingActions(false);
+    } catch {
+      // keep UI responsive even if mark-read fails
+    }
+  }
+
+  return (
+    <div className="flex h-screen min-w-0 overflow-hidden">
+      <Sidebar collapsed={collapsed} />
+      <div className="flex flex-1 flex-col min-w-0">
+        <Topbar
+          onToggle={toggle}
+          pendingCount={pendingTotal}
+          onOpenPending={() => {
+            loadPendingActions(false);
+            setModalOpen(true);
+          }}
+          pendingLoading={loadingPending}
+        />
+        <main className="flex-1 min-w-0 overflow-x-hidden overflow-y-auto p-6">
+          <CallcenterGuard>
+            <Outlet />
+          </CallcenterGuard>
+        </main>
+      </div>
+      <PendingActionsModal
+        open={modalOpen}
+        onClose={() => setModalOpen(false)}
+        items={pendingItems}
+        total={pendingTotal}
+        onMarkRead={handleMarkRead}
+      />
+    </div>
+  );
+}

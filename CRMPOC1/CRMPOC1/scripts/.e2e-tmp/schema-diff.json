@@ -1,0 +1,1721 @@
+{
+  "generated_at": "2026-08-29T12:49:26.788807+00:00",
+  "local_alembic": "0023_service_unit_lifecycle",
+  "prod_alembic": "0023_service_unit_lifecycle",
+  "alembic_in_sync": true,
+  "summary": {
+    "missing_tables": 0,
+    "extra_tables": 0,
+    "missing_columns": 0,
+    "extra_columns": 0,
+    "cosmetic_mismatches": 80,
+    "review_mismatches": 26,
+    "actionable_mismatches": 0,
+    "needs_migration": false
+  },
+  "missing_tables": [],
+  "extra_tables": [],
+  "missing_columns": [],
+  "extra_columns": [],
+  "cosmetic_mismatches": [
+    {
+      "table": "calls",
+      "column": "call_type",
+      "local": {
+        "type": "varchar(20)",
+        "nullable": "YES",
+        "default": null,
+        "extra": ""
+      },
+      "prod": {
+        "type": "varchar(50)",
+        "nullable": "YES",
+        "default": null,
+        "extra": ""
+      }
+    },
+    {
+      "table": "calls",
+      "column": "created_at",
+      "local": {
+        "type": "datetime(6)",
+        "nullable": "NO",
+        "default": "CURRENT_TIMESTAMP(6)",
+        "extra": "DEFAULT_GENERATED"
+      },
+      "prod": {
+        "type": "datetime",
+        "nullable": "NO",
+        "default": "CURRENT_TIMESTAMP",
+        "extra": "DEFAULT_GENERATED"
+      }
+    },
+    {
+      "table": "calls",
+      "column": "follow_up_notes",
+      "local": {
+        "type": "longtext",
+        "nullable": "YES",
+        "default": null,
+        "extra": ""
+      },
+      "prod": {
+        "type": "text",
+        "nullable": "YES",
+        "default": null,
+        "extra": ""
+      }
+    },
+    {
+      "table": "calls",
+      "column": "followup_date",
+      "local": {
+        "type": "datetime(6)",
+        "nullable": "YES",
+        "default": null,
+        "extra": ""
+      },
+      "prod": {
+        "type": "datetime",
+        "nullable": "YES",
+        "default": null,
+        "extra": ""
+      }
+    },
+    {
+      "table": "calls",
+      "column": "notes",
+      "local": {
+        "type": "longtext",
+        "nullable": "YES",
+        "default": null,
+        "extra": ""
+      },
+      "prod": {
+        "type": "text",
+        "nullable": "YES",
+        "default": null,
+        "extra": ""
+      }
+    },
+    {
+      "table": "calls",
+      "column": "updated_at",
+      "local": {
+        "type": "datetime(6)",
+        "nullable": "NO",
+        "default": "CURRENT_TIMESTAMP(6)",
+        "extra": "DEFAULT_GENERATED"
+      },
+      "prod": {
+        "type": "datetime",
+        "nullable": "NO",
+        "default": "CURRENT_TIMESTAMP",
+        "extra": "DEFAULT_GENERATED on update CURRENT_TIMESTAMP"
+      }
+    },
+    {
+      "table": "claim_photos",
+      "column": "uploaded_at",
+      "local": {
+        "type": "datetime(6)",
+        "nullable": "NO",
+        "default": "CURRENT_TIMESTAMP(6)",
+        "extra": "DEFAULT_GENERATED"
+      },
+      "prod": {
+        "type": "datetime",
+        "nullable": "NO",
+        "default": "CURRENT_TIMESTAMP",
+        "extra": "DEFAULT_GENERATED"
+      }
+    },
+    {
+      "table": "claims",
+      "column": "admin_remark",
+      "local": {
+        "type": "longtext",
+        "nullable": "YES",
+        "default": null,
+        "extra": ""
+      },
+      "prod": {
+        "type": "text",
+        "nullable": "YES",
+        "default": null,
+        "extra": ""
+      }
+    },
+    {
+      "table": "claims",
+      "column": "created_at",
+      "local": {
+        "type": "datetime(6)",
+        "nullable": "NO",
+        "default": "CURRENT_TIMESTAMP(6)",
+        "extra": "DEFAULT_GENERATED"
+      },
+      "prod": {
+        "type": "datetime",
+        "nullable": "NO",
+        "default": "CURRENT_TIMESTAMP",
+        "extra": "DEFAULT_GENERATED"
+      }
+    },
+    {
+      "table": "claims",
+      "column": "notes",
+      "local": {
+        "type": "longtext",
+        "nullable": "YES",
+        "default": null,
+        "extra": ""
+      },
+      "prod": {
+        "type": "text",
+        "nullable": "YES",
+        "default": null,
+        "extra": ""
+      }
+    },
+    {
+      "table": "claims",
+      "column": "submitted_at",
+      "local": {
+        "type": "datetime(6)",
+        "nullable": "NO",
+        "default": "CURRENT_TIMESTAMP(6)",
+        "extra": "DEFAULT_GENERATED"
+      },
+      "prod": {
+        "type": "datetime",
+        "nullable": "NO",
+        "default": "CURRENT_TIMESTAMP",
+        "extra": "DEFAULT_GENERATED"
+      }
+    },
+    {
+      "table": "claims",
+      "column": "updated_at",
+      "local": {
+        "type": "datetime(6)",
+        "nullable": "NO",
+        "default": "CURRENT_TIMESTAMP(6)",
+        "extra": "DEFAULT_GENERATED"
+      },
+      "prod": {
+        "type": "datetime",
+        "nullable": "NO",
+        "default": "CURRENT_TIMESTAMP",
+        "extra": "DEFAULT_GENERATED"
+      }
+    },
+    {
+      "table": "complaint_status_logs",
+      "column": "changed_at",
+      "local": {
+        "type": "datetime(6)",
+        "nullable": "NO",
+        "default": "CURRENT_TIMESTAMP(6)",
+        "extra": "DEFAULT_GENERATED"
+      },
+      "prod": {
+        "type": "datetime",
+        "nullable": "NO",
+        "default": "CURRENT_TIMESTAMP",
+        "extra": "DEFAULT_GENERATED"
+      }
+    },
+    {
+      "table": "complaint_status_logs",
+      "column": "remark",
+      "local": {
+        "type": "longtext",
+        "nullable": "YES",
+        "default": null,
+        "extra": ""
+      },
+      "prod": {
+        "type": "text",
+        "nullable": "YES",
+        "default": null,
+        "extra": ""
+      }
+    },
+    {
+      "table": "complaints",
+      "column": "created_at",
+      "local": {
+        "type": "datetime(6)",
+        "nullable": "NO",
+        "default": "CURRENT_TIMESTAMP(6)",
+        "extra": "DEFAULT_GENERATED"
+      },
+      "prod": {
+        "type": "datetime",
+        "nullable": "NO",
+        "default": "CURRENT_TIMESTAMP",
+        "extra": "DEFAULT_GENERATED"
+      }
+    },
+    {
+      "table": "complaints",
+      "column": "customer_address",
+      "local": {
+        "type": "longtext",
+        "nullable": "YES",
+        "default": null,
+        "extra": ""
+      },
+      "prod": {
+        "type": "text",
+        "nullable": "YES",
+        "default": null,
+        "extra": ""
+      }
+    },
+    {
+      "table": "complaints",
+      "column": "deleted_at",
+      "local": {
+        "type": "datetime(6)",
+        "nullable": "YES",
+        "default": null,
+        "extra": ""
+      },
+      "prod": {
+        "type": "datetime",
+        "nullable": "YES",
+        "default": null,
+        "extra": ""
+      }
+    },
+    {
+      "table": "complaints",
+      "column": "problem_description",
+      "local": {
+        "type": "longtext",
+        "nullable": "YES",
+        "default": null,
+        "extra": ""
+      },
+      "prod": {
+        "type": "text",
+        "nullable": "YES",
+        "default": null,
+        "extra": ""
+      }
+    },
+    {
+      "table": "complaints",
+      "column": "remark",
+      "local": {
+        "type": "longtext",
+        "nullable": "YES",
+        "default": null,
+        "extra": ""
+      },
+      "prod": {
+        "type": "text",
+        "nullable": "YES",
+        "default": null,
+        "extra": ""
+      }
+    },
+    {
+      "table": "complaints",
+      "column": "status_date",
+      "local": {
+        "type": "datetime(6)",
+        "nullable": "YES",
+        "default": null,
+        "extra": ""
+      },
+      "prod": {
+        "type": "datetime",
+        "nullable": "YES",
+        "default": null,
+        "extra": ""
+      }
+    },
+    {
+      "table": "complaints",
+      "column": "updated_at",
+      "local": {
+        "type": "datetime(6)",
+        "nullable": "NO",
+        "default": "CURRENT_TIMESTAMP(6)",
+        "extra": "DEFAULT_GENERATED"
+      },
+      "prod": {
+        "type": "datetime",
+        "nullable": "NO",
+        "default": "CURRENT_TIMESTAMP",
+        "extra": "DEFAULT_GENERATED"
+      }
+    },
+    {
+      "table": "couriers",
+      "column": "address",
+      "local": {
+        "type": "longtext",
+        "nullable": "YES",
+        "default": null,
+        "extra": ""
+      },
+      "prod": {
+        "type": "text",
+        "nullable": "YES",
+        "default": null,
+        "extra": ""
+      }
+    },
+    {
+      "table": "couriers",
+      "column": "created_at",
+      "local": {
+        "type": "datetime(6)",
+        "nullable": "NO",
+        "default": "CURRENT_TIMESTAMP(6)",
+        "extra": "DEFAULT_GENERATED"
+      },
+      "prod": {
+        "type": "datetime",
+        "nullable": "NO",
+        "default": "CURRENT_TIMESTAMP",
+        "extra": "DEFAULT_GENERATED"
+      }
+    },
+    {
+      "table": "couriers",
+      "column": "deleted_at",
+      "local": {
+        "type": "datetime(6)",
+        "nullable": "YES",
+        "default": null,
+        "extra": ""
+      },
+      "prod": {
+        "type": "datetime",
+        "nullable": "YES",
+        "default": null,
+        "extra": ""
+      }
+    },
+    {
+      "table": "couriers",
+      "column": "updated_at",
+      "local": {
+        "type": "datetime(6)",
+        "nullable": "NO",
+        "default": "CURRENT_TIMESTAMP(6)",
+        "extra": "DEFAULT_GENERATED"
+      },
+      "prod": {
+        "type": "datetime",
+        "nullable": "NO",
+        "default": "CURRENT_TIMESTAMP",
+        "extra": "DEFAULT_GENERATED"
+      }
+    },
+    {
+      "table": "installation_requests",
+      "column": "address",
+      "local": {
+        "type": "longtext",
+        "nullable": "YES",
+        "default": null,
+        "extra": ""
+      },
+      "prod": {
+        "type": "text",
+        "nullable": "YES",
+        "default": null,
+        "extra": ""
+      }
+    },
+    {
+      "table": "installation_requests",
+      "column": "created_at",
+      "local": {
+        "type": "datetime(6)",
+        "nullable": "NO",
+        "default": "CURRENT_TIMESTAMP(6)",
+        "extra": "DEFAULT_GENERATED"
+      },
+      "prod": {
+        "type": "datetime",
+        "nullable": "NO",
+        "default": "CURRENT_TIMESTAMP",
+        "extra": "DEFAULT_GENERATED"
+      }
+    },
+    {
+      "table": "installation_requests",
+      "column": "installation_date",
+      "local": {
+        "type": "datetime(6)",
+        "nullable": "YES",
+        "default": null,
+        "extra": ""
+      },
+      "prod": {
+        "type": "datetime",
+        "nullable": "YES",
+        "default": null,
+        "extra": ""
+      }
+    },
+    {
+      "table": "installation_requests",
+      "column": "request_date",
+      "local": {
+        "type": "datetime(6)",
+        "nullable": "NO",
+        "default": "CURRENT_TIMESTAMP(6)",
+        "extra": "DEFAULT_GENERATED"
+      },
+      "prod": {
+        "type": "datetime",
+        "nullable": "NO",
+        "default": "CURRENT_TIMESTAMP",
+        "extra": "DEFAULT_GENERATED"
+      }
+    },
+    {
+      "table": "installation_requests",
+      "column": "updated_at",
+      "local": {
+        "type": "datetime(6)",
+        "nullable": "NO",
+        "default": "CURRENT_TIMESTAMP(6)",
+        "extra": "DEFAULT_GENERATED"
+      },
+      "prod": {
+        "type": "datetime",
+        "nullable": "NO",
+        "default": "CURRENT_TIMESTAMP",
+        "extra": "DEFAULT_GENERATED"
+      }
+    },
+    {
+      "table": "installation_requests",
+      "column": "work_report",
+      "local": {
+        "type": "longtext",
+        "nullable": "YES",
+        "default": null,
+        "extra": ""
+      },
+      "prod": {
+        "type": "text",
+        "nullable": "YES",
+        "default": null,
+        "extra": ""
+      }
+    },
+    {
+      "table": "item_masters",
+      "column": "created_at",
+      "local": {
+        "type": "datetime(6)",
+        "nullable": "NO",
+        "default": "CURRENT_TIMESTAMP(6)",
+        "extra": "DEFAULT_GENERATED"
+      },
+      "prod": {
+        "type": "datetime",
+        "nullable": "NO",
+        "default": "CURRENT_TIMESTAMP",
+        "extra": "DEFAULT_GENERATED"
+      }
+    },
+    {
+      "table": "item_masters",
+      "column": "deleted_at",
+      "local": {
+        "type": "datetime(6)",
+        "nullable": "YES",
+        "default": null,
+        "extra": ""
+      },
+      "prod": {
+        "type": "datetime",
+        "nullable": "YES",
+        "default": null,
+        "extra": ""
+      }
+    },
+    {
+      "table": "item_masters",
+      "column": "description",
+      "local": {
+        "type": "longtext",
+        "nullable": "YES",
+        "default": null,
+        "extra": ""
+      },
+      "prod": {
+        "type": "text",
+        "nullable": "YES",
+        "default": null,
+        "extra": ""
+      }
+    },
+    {
+      "table": "item_masters",
+      "column": "updated_at",
+      "local": {
+        "type": "datetime(6)",
+        "nullable": "NO",
+        "default": "CURRENT_TIMESTAMP(6)",
+        "extra": "DEFAULT_GENERATED"
+      },
+      "prod": {
+        "type": "datetime",
+        "nullable": "NO",
+        "default": "CURRENT_TIMESTAMP",
+        "extra": "DEFAULT_GENERATED"
+      }
+    },
+    {
+      "table": "market_categories",
+      "column": "created_at",
+      "local": {
+        "type": "datetime(6)",
+        "nullable": "NO",
+        "default": "CURRENT_TIMESTAMP(6)",
+        "extra": "DEFAULT_GENERATED"
+      },
+      "prod": {
+        "type": "datetime",
+        "nullable": "NO",
+        "default": "CURRENT_TIMESTAMP",
+        "extra": "DEFAULT_GENERATED"
+      }
+    },
+    {
+      "table": "market_categories",
+      "column": "updated_at",
+      "local": {
+        "type": "datetime(6)",
+        "nullable": "NO",
+        "default": "CURRENT_TIMESTAMP(6)",
+        "extra": "DEFAULT_GENERATED"
+      },
+      "prod": {
+        "type": "datetime",
+        "nullable": "NO",
+        "default": "CURRENT_TIMESTAMP",
+        "extra": "DEFAULT_GENERATED"
+      }
+    },
+    {
+      "table": "market_items",
+      "column": "created_at",
+      "local": {
+        "type": "datetime(6)",
+        "nullable": "NO",
+        "default": "CURRENT_TIMESTAMP(6)",
+        "extra": "DEFAULT_GENERATED"
+      },
+      "prod": {
+        "type": "datetime",
+        "nullable": "NO",
+        "default": "CURRENT_TIMESTAMP",
+        "extra": "DEFAULT_GENERATED"
+      }
+    },
+    {
+      "table": "market_items",
+      "column": "description",
+      "local": {
+        "type": "longtext",
+        "nullable": "YES",
+        "default": null,
+        "extra": ""
+      },
+      "prod": {
+        "type": "text",
+        "nullable": "YES",
+        "default": null,
+        "extra": ""
+      }
+    },
+    {
+      "table": "market_items",
+      "column": "updated_at",
+      "local": {
+        "type": "datetime(6)",
+        "nullable": "NO",
+        "default": "CURRENT_TIMESTAMP(6)",
+        "extra": "DEFAULT_GENERATED"
+      },
+      "prod": {
+        "type": "datetime",
+        "nullable": "NO",
+        "default": "CURRENT_TIMESTAMP",
+        "extra": "DEFAULT_GENERATED"
+      }
+    },
+    {
+      "table": "market_order_items",
+      "column": "created_at",
+      "local": {
+        "type": "datetime(6)",
+        "nullable": "NO",
+        "default": "CURRENT_TIMESTAMP(6)",
+        "extra": "DEFAULT_GENERATED"
+      },
+      "prod": {
+        "type": "datetime",
+        "nullable": "NO",
+        "default": "CURRENT_TIMESTAMP",
+        "extra": "DEFAULT_GENERATED"
+      }
+    },
+    {
+      "table": "market_order_items",
+      "column": "updated_at",
+      "local": {
+        "type": "datetime(6)",
+        "nullable": "NO",
+        "default": "CURRENT_TIMESTAMP(6)",
+        "extra": "DEFAULT_GENERATED"
+      },
+      "prod": {
+        "type": "datetime",
+        "nullable": "NO",
+        "default": "CURRENT_TIMESTAMP",
+        "extra": "DEFAULT_GENERATED"
+      }
+    },
+    {
+      "table": "market_orders",
+      "column": "created_at",
+      "local": {
+        "type": "datetime(6)",
+        "nullable": "NO",
+        "default": "CURRENT_TIMESTAMP(6)",
+        "extra": "DEFAULT_GENERATED"
+      },
+      "prod": {
+        "type": "datetime",
+        "nullable": "NO",
+        "default": "CURRENT_TIMESTAMP",
+        "extra": "DEFAULT_GENERATED"
+      }
+    },
+    {
+      "table": "market_orders",
+      "column": "notes",
+      "local": {
+        "type": "longtext",
+        "nullable": "YES",
+        "default": null,
+        "extra": ""
+      },
+      "prod": {
+        "type": "text",
+        "nullable": "YES",
+        "default": null,
+        "extra": ""
+      }
+    },
+    {
+      "table": "market_orders",
+      "column": "updated_at",
+      "local": {
+        "type": "datetime(6)",
+        "nullable": "NO",
+        "default": "CURRENT_TIMESTAMP(6)",
+        "extra": "DEFAULT_GENERATED"
+      },
+      "prod": {
+        "type": "datetime",
+        "nullable": "NO",
+        "default": "CURRENT_TIMESTAMP",
+        "extra": "DEFAULT_GENERATED"
+      }
+    },
+    {
+      "table": "market_users",
+      "column": "address",
+      "local": {
+        "type": "longtext",
+        "nullable": "YES",
+        "default": null,
+        "extra": ""
+      },
+      "prod": {
+        "type": "text",
+        "nullable": "YES",
+        "default": null,
+        "extra": ""
+      }
+    },
+    {
+      "table": "market_users",
+      "column": "created_at",
+      "local": {
+        "type": "datetime(6)",
+        "nullable": "NO",
+        "default": "CURRENT_TIMESTAMP(6)",
+        "extra": "DEFAULT_GENERATED"
+      },
+      "prod": {
+        "type": "datetime",
+        "nullable": "NO",
+        "default": "CURRENT_TIMESTAMP",
+        "extra": "DEFAULT_GENERATED"
+      }
+    },
+    {
+      "table": "market_users",
+      "column": "joined_at",
+      "local": {
+        "type": "datetime(6)",
+        "nullable": "NO",
+        "default": "CURRENT_TIMESTAMP(6)",
+        "extra": "DEFAULT_GENERATED"
+      },
+      "prod": {
+        "type": "datetime",
+        "nullable": "NO",
+        "default": "CURRENT_TIMESTAMP",
+        "extra": "DEFAULT_GENERATED"
+      }
+    },
+    {
+      "table": "market_users",
+      "column": "updated_at",
+      "local": {
+        "type": "datetime(6)",
+        "nullable": "NO",
+        "default": "CURRENT_TIMESTAMP(6)",
+        "extra": "DEFAULT_GENERATED"
+      },
+      "prod": {
+        "type": "datetime",
+        "nullable": "NO",
+        "default": "CURRENT_TIMESTAMP",
+        "extra": "DEFAULT_GENERATED"
+      }
+    },
+    {
+      "table": "order_items",
+      "column": "created_at",
+      "local": {
+        "type": "datetime(6)",
+        "nullable": "NO",
+        "default": "CURRENT_TIMESTAMP(6)",
+        "extra": "DEFAULT_GENERATED"
+      },
+      "prod": {
+        "type": "datetime",
+        "nullable": "NO",
+        "default": "CURRENT_TIMESTAMP",
+        "extra": "DEFAULT_GENERATED"
+      }
+    },
+    {
+      "table": "order_items",
+      "column": "updated_at",
+      "local": {
+        "type": "datetime(6)",
+        "nullable": "NO",
+        "default": "CURRENT_TIMESTAMP(6)",
+        "extra": "DEFAULT_GENERATED"
+      },
+      "prod": {
+        "type": "datetime",
+        "nullable": "NO",
+        "default": "CURRENT_TIMESTAMP",
+        "extra": "DEFAULT_GENERATED"
+      }
+    },
+    {
+      "table": "orders",
+      "column": "created_at",
+      "local": {
+        "type": "datetime(6)",
+        "nullable": "NO",
+        "default": "CURRENT_TIMESTAMP(6)",
+        "extra": "DEFAULT_GENERATED"
+      },
+      "prod": {
+        "type": "datetime",
+        "nullable": "NO",
+        "default": "CURRENT_TIMESTAMP",
+        "extra": "DEFAULT_GENERATED"
+      }
+    },
+    {
+      "table": "orders",
+      "column": "customer_address",
+      "local": {
+        "type": "longtext",
+        "nullable": "YES",
+        "default": null,
+        "extra": ""
+      },
+      "prod": {
+        "type": "text",
+        "nullable": "YES",
+        "default": null,
+        "extra": ""
+      }
+    },
+    {
+      "table": "orders",
+      "column": "deleted_at",
+      "local": {
+        "type": "datetime(6)",
+        "nullable": "YES",
+        "default": null,
+        "extra": ""
+      },
+      "prod": {
+        "type": "datetime",
+        "nullable": "YES",
+        "default": null,
+        "extra": ""
+      }
+    },
+    {
+      "table": "orders",
+      "column": "updated_at",
+      "local": {
+        "type": "datetime(6)",
+        "nullable": "NO",
+        "default": "CURRENT_TIMESTAMP(6)",
+        "extra": "DEFAULT_GENERATED"
+      },
+      "prod": {
+        "type": "datetime",
+        "nullable": "NO",
+        "default": "CURRENT_TIMESTAMP",
+        "extra": "DEFAULT_GENERATED"
+      }
+    },
+    {
+      "table": "payment_transactions",
+      "column": "recorded_at",
+      "local": {
+        "type": "datetime",
+        "nullable": "NO",
+        "default": "now()",
+        "extra": "DEFAULT_GENERATED"
+      },
+      "prod": {
+        "type": "datetime",
+        "nullable": "NO",
+        "default": "CURRENT_TIMESTAMP",
+        "extra": "DEFAULT_GENERATED"
+      }
+    },
+    {
+      "table": "projects",
+      "column": "created_at",
+      "local": {
+        "type": "datetime(6)",
+        "nullable": "NO",
+        "default": "CURRENT_TIMESTAMP(6)",
+        "extra": "DEFAULT_GENERATED"
+      },
+      "prod": {
+        "type": "datetime",
+        "nullable": "NO",
+        "default": "CURRENT_TIMESTAMP",
+        "extra": "DEFAULT_GENERATED"
+      }
+    },
+    {
+      "table": "projects",
+      "column": "description",
+      "local": {
+        "type": "longtext",
+        "nullable": "YES",
+        "default": null,
+        "extra": ""
+      },
+      "prod": {
+        "type": "text",
+        "nullable": "YES",
+        "default": null,
+        "extra": ""
+      }
+    },
+    {
+      "table": "projects",
+      "column": "updated_at",
+      "local": {
+        "type": "datetime(6)",
+        "nullable": "NO",
+        "default": "CURRENT_TIMESTAMP(6)",
+        "extra": "DEFAULT_GENERATED"
+      },
+      "prod": {
+        "type": "datetime",
+        "nullable": "NO",
+        "default": "CURRENT_TIMESTAMP",
+        "extra": "DEFAULT_GENERATED"
+      }
+    },
+    {
+      "table": "roles",
+      "column": "created_at",
+      "local": {
+        "type": "datetime(6)",
+        "nullable": "NO",
+        "default": "CURRENT_TIMESTAMP(6)",
+        "extra": "DEFAULT_GENERATED"
+      },
+      "prod": {
+        "type": "datetime",
+        "nullable": "NO",
+        "default": "CURRENT_TIMESTAMP",
+        "extra": "DEFAULT_GENERATED"
+      }
+    },
+    {
+      "table": "roles",
+      "column": "description",
+      "local": {
+        "type": "longtext",
+        "nullable": "YES",
+        "default": null,
+        "extra": ""
+      },
+      "prod": {
+        "type": "text",
+        "nullable": "YES",
+        "default": null,
+        "extra": ""
+      }
+    },
+    {
+      "table": "roles",
+      "column": "updated_at",
+      "local": {
+        "type": "datetime(6)",
+        "nullable": "NO",
+        "default": "CURRENT_TIMESTAMP(6)",
+        "extra": "DEFAULT_GENERATED"
+      },
+      "prod": {
+        "type": "datetime",
+        "nullable": "NO",
+        "default": "CURRENT_TIMESTAMP",
+        "extra": "DEFAULT_GENERATED"
+      }
+    },
+    {
+      "table": "service_request_items",
+      "column": "created_at",
+      "local": {
+        "type": "datetime(6)",
+        "nullable": "NO",
+        "default": "CURRENT_TIMESTAMP(6)",
+        "extra": "DEFAULT_GENERATED"
+      },
+      "prod": {
+        "type": "datetime",
+        "nullable": "NO",
+        "default": "CURRENT_TIMESTAMP",
+        "extra": "DEFAULT_GENERATED"
+      }
+    },
+    {
+      "table": "service_request_items",
+      "column": "updated_at",
+      "local": {
+        "type": "datetime(6)",
+        "nullable": "NO",
+        "default": "CURRENT_TIMESTAMP(6)",
+        "extra": "DEFAULT_GENERATED on update CURRENT_TIMESTAMP(6)"
+      },
+      "prod": {
+        "type": "datetime",
+        "nullable": "NO",
+        "default": "CURRENT_TIMESTAMP",
+        "extra": "DEFAULT_GENERATED"
+      }
+    },
+    {
+      "table": "service_request_units",
+      "column": "created_at",
+      "local": {
+        "type": "datetime(6)",
+        "nullable": "NO",
+        "default": "CURRENT_TIMESTAMP(6)",
+        "extra": "DEFAULT_GENERATED"
+      },
+      "prod": {
+        "type": "datetime",
+        "nullable": "NO",
+        "default": "CURRENT_TIMESTAMP",
+        "extra": "DEFAULT_GENERATED"
+      }
+    },
+    {
+      "table": "service_request_units",
+      "column": "updated_at",
+      "local": {
+        "type": "datetime(6)",
+        "nullable": "NO",
+        "default": "CURRENT_TIMESTAMP(6)",
+        "extra": "DEFAULT_GENERATED on update CURRENT_TIMESTAMP(6)"
+      },
+      "prod": {
+        "type": "datetime",
+        "nullable": "NO",
+        "default": "CURRENT_TIMESTAMP",
+        "extra": "DEFAULT_GENERATED"
+      }
+    },
+    {
+      "table": "service_requests",
+      "column": "created_at",
+      "local": {
+        "type": "datetime(6)",
+        "nullable": "NO",
+        "default": "CURRENT_TIMESTAMP(6)",
+        "extra": "DEFAULT_GENERATED"
+      },
+      "prod": {
+        "type": "datetime",
+        "nullable": "NO",
+        "default": null,
+        "extra": ""
+      }
+    },
+    {
+      "table": "service_requests",
+      "column": "updated_at",
+      "local": {
+        "type": "datetime(6)",
+        "nullable": "NO",
+        "default": "CURRENT_TIMESTAMP(6)",
+        "extra": "DEFAULT_GENERATED on update CURRENT_TIMESTAMP(6)"
+      },
+      "prod": {
+        "type": "datetime",
+        "nullable": "NO",
+        "default": null,
+        "extra": ""
+      }
+    },
+    {
+      "table": "users",
+      "column": "created_at",
+      "local": {
+        "type": "datetime(6)",
+        "nullable": "NO",
+        "default": "CURRENT_TIMESTAMP(6)",
+        "extra": "DEFAULT_GENERATED"
+      },
+      "prod": {
+        "type": "datetime",
+        "nullable": "NO",
+        "default": "CURRENT_TIMESTAMP",
+        "extra": "DEFAULT_GENERATED"
+      }
+    },
+    {
+      "table": "users",
+      "column": "deleted_at",
+      "local": {
+        "type": "datetime(6)",
+        "nullable": "YES",
+        "default": null,
+        "extra": ""
+      },
+      "prod": {
+        "type": "datetime",
+        "nullable": "YES",
+        "default": null,
+        "extra": ""
+      }
+    },
+    {
+      "table": "users",
+      "column": "updated_at",
+      "local": {
+        "type": "datetime(6)",
+        "nullable": "NO",
+        "default": "CURRENT_TIMESTAMP(6)",
+        "extra": "DEFAULT_GENERATED"
+      },
+      "prod": {
+        "type": "datetime",
+        "nullable": "NO",
+        "default": "CURRENT_TIMESTAMP",
+        "extra": "DEFAULT_GENERATED"
+      }
+    },
+    {
+      "table": "vendors",
+      "column": "address",
+      "local": {
+        "type": "longtext",
+        "nullable": "YES",
+        "default": null,
+        "extra": ""
+      },
+      "prod": {
+        "type": "text",
+        "nullable": "YES",
+        "default": null,
+        "extra": ""
+      }
+    },
+    {
+      "table": "vendors",
+      "column": "created_at",
+      "local": {
+        "type": "datetime(6)",
+        "nullable": "NO",
+        "default": "CURRENT_TIMESTAMP(6)",
+        "extra": "DEFAULT_GENERATED"
+      },
+      "prod": {
+        "type": "datetime",
+        "nullable": "NO",
+        "default": "CURRENT_TIMESTAMP",
+        "extra": "DEFAULT_GENERATED"
+      }
+    },
+    {
+      "table": "vendors",
+      "column": "deleted_at",
+      "local": {
+        "type": "datetime(6)",
+        "nullable": "YES",
+        "default": null,
+        "extra": ""
+      },
+      "prod": {
+        "type": "datetime",
+        "nullable": "YES",
+        "default": null,
+        "extra": ""
+      }
+    },
+    {
+      "table": "vendors",
+      "column": "updated_at",
+      "local": {
+        "type": "datetime(6)",
+        "nullable": "NO",
+        "default": "CURRENT_TIMESTAMP(6)",
+        "extra": "DEFAULT_GENERATED"
+      },
+      "prod": {
+        "type": "datetime",
+        "nullable": "NO",
+        "default": "CURRENT_TIMESTAMP",
+        "extra": "DEFAULT_GENERATED"
+      }
+    },
+    {
+      "table": "workflow_tasks",
+      "column": "created_at",
+      "local": {
+        "type": "datetime(6)",
+        "nullable": "NO",
+        "default": "CURRENT_TIMESTAMP(6)",
+        "extra": "DEFAULT_GENERATED"
+      },
+      "prod": {
+        "type": "datetime",
+        "nullable": "NO",
+        "default": "CURRENT_TIMESTAMP",
+        "extra": "DEFAULT_GENERATED"
+      }
+    },
+    {
+      "table": "workflow_tasks",
+      "column": "error_message",
+      "local": {
+        "type": "longtext",
+        "nullable": "YES",
+        "default": null,
+        "extra": ""
+      },
+      "prod": {
+        "type": "text",
+        "nullable": "YES",
+        "default": null,
+        "extra": ""
+      }
+    },
+    {
+      "table": "workflow_tasks",
+      "column": "input_data",
+      "local": {
+        "type": "longtext",
+        "nullable": "YES",
+        "default": null,
+        "extra": ""
+      },
+      "prod": {
+        "type": "text",
+        "nullable": "YES",
+        "default": null,
+        "extra": ""
+      }
+    },
+    {
+      "table": "workflow_tasks",
+      "column": "output_data",
+      "local": {
+        "type": "longtext",
+        "nullable": "YES",
+        "default": null,
+        "extra": ""
+      },
+      "prod": {
+        "type": "text",
+        "nullable": "YES",
+        "default": null,
+        "extra": ""
+      }
+    },
+    {
+      "table": "workflow_tasks",
+      "column": "updated_at",
+      "local": {
+        "type": "datetime(6)",
+        "nullable": "NO",
+        "default": "CURRENT_TIMESTAMP(6)",
+        "extra": "DEFAULT_GENERATED"
+      },
+      "prod": {
+        "type": "datetime",
+        "nullable": "NO",
+        "default": "CURRENT_TIMESTAMP",
+        "extra": "DEFAULT_GENERATED"
+      }
+    }
+  ],
+  "review_mismatches": [
+    {
+      "table": "calls",
+      "column": "call_datetime",
+      "local": {
+        "type": "datetime(6)",
+        "nullable": "NO",
+        "default": null,
+        "extra": ""
+      },
+      "prod": {
+        "type": "datetime",
+        "nullable": "YES",
+        "default": null,
+        "extra": ""
+      }
+    },
+    {
+      "table": "calls",
+      "column": "customer_name",
+      "local": {
+        "type": "varchar(255)",
+        "nullable": "YES",
+        "default": null,
+        "extra": ""
+      },
+      "prod": {
+        "type": "varchar(255)",
+        "nullable": "NO",
+        "default": null,
+        "extra": ""
+      }
+    },
+    {
+      "table": "calls",
+      "column": "priority",
+      "local": {
+        "type": "varchar(20)",
+        "nullable": "NO",
+        "default": "medium",
+        "extra": ""
+      },
+      "prod": {
+        "type": "varchar(50)",
+        "nullable": "YES",
+        "default": null,
+        "extra": ""
+      }
+    },
+    {
+      "table": "calls",
+      "column": "status",
+      "local": {
+        "type": "varchar(30)",
+        "nullable": "YES",
+        "default": null,
+        "extra": ""
+      },
+      "prod": {
+        "type": "varchar(50)",
+        "nullable": "NO",
+        "default": null,
+        "extra": ""
+      }
+    },
+    {
+      "table": "claims",
+      "column": "status",
+      "local": {
+        "type": "varchar(50)",
+        "nullable": "NO",
+        "default": "Processing",
+        "extra": ""
+      },
+      "prod": {
+        "type": "varchar(50)",
+        "nullable": "NO",
+        "default": null,
+        "extra": ""
+      }
+    },
+    {
+      "table": "complaints",
+      "column": "send_sms",
+      "local": {
+        "type": "tinyint(1)",
+        "nullable": "NO",
+        "default": "1",
+        "extra": ""
+      },
+      "prod": {
+        "type": "tinyint(1)",
+        "nullable": "NO",
+        "default": null,
+        "extra": ""
+      }
+    },
+    {
+      "table": "complaints",
+      "column": "source",
+      "local": {
+        "type": "varchar(50)",
+        "nullable": "NO",
+        "default": "callcenter",
+        "extra": ""
+      },
+      "prod": {
+        "type": "varchar(50)",
+        "nullable": "NO",
+        "default": null,
+        "extra": ""
+      }
+    },
+    {
+      "table": "complaints",
+      "column": "status",
+      "local": {
+        "type": "varchar(50)",
+        "nullable": "NO",
+        "default": "Pending",
+        "extra": ""
+      },
+      "prod": {
+        "type": "varchar(50)",
+        "nullable": "NO",
+        "default": null,
+        "extra": ""
+      }
+    },
+    {
+      "table": "installation_requests",
+      "column": "status",
+      "local": {
+        "type": "varchar(50)",
+        "nullable": "NO",
+        "default": "Pending",
+        "extra": ""
+      },
+      "prod": {
+        "type": "varchar(50)",
+        "nullable": "NO",
+        "default": null,
+        "extra": ""
+      }
+    },
+    {
+      "table": "order_items",
+      "column": "free_service_count",
+      "local": {
+        "type": "int",
+        "nullable": "NO",
+        "default": "0",
+        "extra": ""
+      },
+      "prod": {
+        "type": "int",
+        "nullable": "NO",
+        "default": null,
+        "extra": ""
+      }
+    },
+    {
+      "table": "order_items",
+      "column": "installation_status",
+      "local": {
+        "type": "varchar(50)",
+        "nullable": "NO",
+        "default": "Not Requested",
+        "extra": ""
+      },
+      "prod": {
+        "type": "varchar(50)",
+        "nullable": "NO",
+        "default": null,
+        "extra": ""
+      }
+    },
+    {
+      "table": "order_items",
+      "column": "item_qty",
+      "local": {
+        "type": "int",
+        "nullable": "NO",
+        "default": "1",
+        "extra": ""
+      },
+      "prod": {
+        "type": "int",
+        "nullable": "NO",
+        "default": null,
+        "extra": ""
+      }
+    },
+    {
+      "table": "order_items",
+      "column": "service_consume_count",
+      "local": {
+        "type": "int",
+        "nullable": "NO",
+        "default": "0",
+        "extra": ""
+      },
+      "prod": {
+        "type": "int",
+        "nullable": "NO",
+        "default": null,
+        "extra": ""
+      }
+    },
+    {
+      "table": "orders",
+      "column": "status",
+      "local": {
+        "type": "varchar(50)",
+        "nullable": "NO",
+        "default": "Pending",
+        "extra": ""
+      },
+      "prod": {
+        "type": "varchar(50)",
+        "nullable": "NO",
+        "default": null,
+        "extra": ""
+      }
+    },
+    {
+      "table": "permissions",
+      "column": "can_create",
+      "local": {
+        "type": "tinyint(1)",
+        "nullable": "NO",
+        "default": "0",
+        "extra": ""
+      },
+      "prod": {
+        "type": "tinyint(1)",
+        "nullable": "NO",
+        "default": null,
+        "extra": ""
+      }
+    },
+    {
+      "table": "permissions",
+      "column": "can_delete",
+      "local": {
+        "type": "tinyint(1)",
+        "nullable": "NO",
+        "default": "0",
+        "extra": ""
+      },
+      "prod": {
+        "type": "tinyint(1)",
+        "nullable": "NO",
+        "default": null,
+        "extra": ""
+      }
+    },
+    {
+      "table": "permissions",
+      "column": "can_edit",
+      "local": {
+        "type": "tinyint(1)",
+        "nullable": "NO",
+        "default": "0",
+        "extra": ""
+      },
+      "prod": {
+        "type": "tinyint(1)",
+        "nullable": "NO",
+        "default": null,
+        "extra": ""
+      }
+    },
+    {
+      "table": "permissions",
+      "column": "can_export",
+      "local": {
+        "type": "tinyint(1)",
+        "nullable": "NO",
+        "default": "0",
+        "extra": ""
+      },
+      "prod": {
+        "type": "tinyint(1)",
+        "nullable": "NO",
+        "default": null,
+        "extra": ""
+      }
+    },
+    {
+      "table": "permissions",
+      "column": "can_view",
+      "local": {
+        "type": "tinyint(1)",
+        "nullable": "NO",
+        "default": "0",
+        "extra": ""
+      },
+      "prod": {
+        "type": "tinyint(1)",
+        "nullable": "NO",
+        "default": null,
+        "extra": ""
+      }
+    },
+    {
+      "table": "projects",
+      "column": "status",
+      "local": {
+        "type": "varchar(30)",
+        "nullable": "NO",
+        "default": "Draft",
+        "extra": ""
+      },
+      "prod": {
+        "type": "varchar(30)",
+        "nullable": "NO",
+        "default": null,
+        "extra": ""
+      }
+    },
+    {
+      "table": "serial_history_events",
+      "column": "metadata_json",
+      "local": {
+        "type": "json",
+        "nullable": "YES",
+        "default": null,
+        "extra": ""
+      },
+      "prod": {
+        "type": "text",
+        "nullable": "YES",
+        "default": null,
+        "extra": ""
+      }
+    },
+    {
+      "table": "users",
+      "column": "is_active",
+      "local": {
+        "type": "tinyint(1)",
+        "nullable": "NO",
+        "default": "1",
+        "extra": ""
+      },
+      "prod": {
+        "type": "tinyint(1)",
+        "nullable": "NO",
+        "default": null,
+        "extra": ""
+      }
+    },
+    {
+      "table": "users",
+      "column": "role",
+      "local": {
+        "type": "varchar(100)",
+        "nullable": "NO",
+        "default": "callcenter",
+        "extra": ""
+      },
+      "prod": {
+        "type": "varchar(100)",
+        "nullable": "NO",
+        "default": null,
+        "extra": ""
+      }
+    },
+    {
+      "table": "vendors",
+      "column": "is_active",
+      "local": {
+        "type": "tinyint(1)",
+        "nullable": "NO",
+        "default": "1",
+        "extra": ""
+      },
+      "prod": {
+        "type": "tinyint(1)",
+        "nullable": "NO",
+        "default": null,
+        "extra": ""
+      }
+    },
+    {
+      "table": "workflow_tasks",
+      "column": "sequence",
+      "local": {
+        "type": "int",
+        "nullable": "NO",
+        "default": "1",
+        "extra": ""
+      },
+      "prod": {
+        "type": "int",
+        "nullable": "NO",
+        "default": null,
+        "extra": ""
+      }
+    },
+    {
+      "table": "workflow_tasks",
+      "column": "status",
+      "local": {
+        "type": "varchar(20)",
+        "nullable": "NO",
+        "default": "Pending",
+        "extra": ""
+      },
+      "prod": {
+        "type": "varchar(20)",
+        "nullable": "NO",
+        "default": null,
+        "extra": ""
+      }
+    }
+  ],
+  "actionable_mismatches": []
+}

@@ -1,0 +1,351 @@
+from datetime import date, datetime
+from typing import Literal
+
+from pydantic import BaseModel, EmailStr, Field, field_validator
+
+SERVICE_STATUSES = (
+    "New",
+    "Service Team Review",
+    "Assigned",
+    "Engineer Visit",
+    "Serial Verified",
+    "Pending Service Approval",
+    "Approved for Service",
+    "Service In Progress",
+    "Service Completed",
+    "Payment Requested",
+    "Payment Completed",
+    "Closed",
+    "Rejected",
+    "Cancelled",
+)
+SERVICE_TYPES = ("Free Service", "Warranty Service", "Paid Service")
+WARRANTY_STATUSES = ("IN WARRANTY", "OUT OF WARRANTY")
+
+
+class ServiceCreate(BaseModel):
+    request_date: date | None = None
+    query_type: str = "Service"
+    customer_name: str = Field(min_length=1, max_length=255)
+    customer_mobile: str = Field(min_length=10, max_length=20)
+    customer_email: EmailStr | None = None
+    customer_address: str | None = None
+    model_details: str | None = Field(default=None, max_length=255)
+    problem_description: str | None = None
+    additional_remarks: str | None = None
+    send_request_number: bool = True
+
+    @field_validator("customer_mobile")
+    @classmethod
+    def _digits_only(cls, v: str) -> str:
+        digits = "".join(ch for ch in v if ch.isdigit())
+        if len(digits) < 10:
+            raise ValueError("Customer mobile must contain at least 10 digits")
+        return digits
+
+
+class ServiceUpdate(BaseModel):
+    customer_name: str | None = None
+    customer_mobile: str | None = None
+    customer_email: EmailStr | None = None
+    customer_address: str | None = None
+    model_details: str | None = None
+    problem_description: str | None = None
+    additional_remarks: str | None = None
+
+
+class ServiceIdentifyCustomer(BaseModel):
+    order_id: int | None = None
+    order_item_id: int | None = None
+    customer_name: str | None = None
+    customer_mobile: str | None = None
+    customer_email: str | None = None
+    customer_address: str | None = None
+
+
+class ServiceAssignmentIn(BaseModel):
+    assignee_type: Literal["engineer", "vendor"]
+    assignee_id: int
+    remarks: str | None = None
+
+
+class ServiceSerialVerifyIn(BaseModel):
+    serial_no: str = Field(min_length=1, max_length=100)
+
+
+class ServiceObservationIn(BaseModel):
+    problem_found: str | None = None
+    observation: str | None = None
+    recommended_action: str | None = None
+    parts_required: list[str] = []
+    estimated_service_charge: float | None = None
+    estimated_parts_charge: float | None = None
+    remarks: str | None = None
+
+
+class ServiceApprovalIn(BaseModel):
+    decision: Literal["Approve", "Reject"]
+    remarks: str | None = None
+
+
+class ServiceCompletionIn(BaseModel):
+    work_performed: str | None = None
+    parts_replaced: list[str] = []
+    service_notes: str | None = None
+    service_date: date | None = None
+    old_part_serial_no: str | None = None
+    new_part_serial_no: str | None = None
+    final_amount: float | None = None
+    completion_remarks: str | None = None
+
+
+class ServicePaymentRequestIn(BaseModel):
+    customer_charge_amount: float | None = None
+    settlement_service_amount: float | None = None
+    settlement_parts_amount: float | None = None
+    total_requested_amount: float | None = None
+    payment_type: str | None = None
+    payment_qr_code_path: str | None = None
+    remarks: str | None = None
+
+
+class ServiceDocumentReviewIn(BaseModel):
+    status: Literal["Reviewed", "Rejected"]
+    remarks: str | None = None
+
+
+class ServiceDocumentLinkOut(BaseModel):
+    service_request_id: int
+    upload_url: str
+    customer_email: str | None
+    document_request_sent_at: datetime | None
+    status: str
+
+
+class ServicePublicDocumentContext(BaseModel):
+    service_request_id: int
+    request_no: str
+    customer_name: str
+    customer_email: str | None
+    model_details: str | None
+    order_no: str | None = None
+    serial_no: str | None = None
+    problem_description: str | None
+    required_documents: list[str] = []
+    status: str
+
+
+class ServiceHistoryEntry(BaseModel):
+    id: int
+    action: str
+    old_status: str | None
+    new_status: str | None
+    performed_by: int | None
+    performed_by_name: str | None = None
+    performed_role: str | None = None
+    remarks: str | None = None
+    metadata: dict | None = None
+    created_at: datetime
+
+
+class ServiceDocumentOut(BaseModel):
+    id: int
+    document_type: str
+    file_path: str
+    uploaded_by_type: str
+    uploaded_by_user_id: int | None
+    uploaded_by_customer_name: str | None
+    status: str
+    reviewed_by: int | None
+    reviewed_by_name: str | None = None
+    reviewed_at: datetime | None
+    review_remarks: str | None
+    uploaded_at: datetime
+
+
+class ServiceObservationOut(BaseModel):
+    id: int
+    submitted_by_user_id: int | None
+    submitted_by_name: str | None = None
+    serial_no: str | None
+    warranty_status: str | None
+    service_type: str | None
+    problem_found: str | None
+    observation: str | None
+    recommended_action: str | None
+    parts_required: list[str] = []
+    estimated_service_charge: float | None
+    estimated_parts_charge: float | None
+    remarks: str | None
+    submitted_at: datetime
+
+
+class ServiceApprovalOut(BaseModel):
+    id: int
+    observation_id: int | None
+    decision: str
+    remarks: str | None
+    approved_by: int | None
+    approved_by_name: str | None = None
+    approved_at: datetime
+
+
+class ServiceCompletionOut(BaseModel):
+    id: int
+    performed_by_type: str
+    performed_by_user_id: int | None
+    performed_by_name: str | None = None
+    performed_by_vendor_id: int | None
+    performed_by_vendor_name: str | None = None
+    work_performed: str | None
+    parts_replaced: list[str] = []
+    service_notes: str | None
+    service_date: date | None
+    old_part_serial_no: str | None = None
+    new_part_serial_no: str | None = None
+    customer_acknowledgement_path: str | None
+    final_amount: float | None
+    completion_remarks: str | None
+    completed_at: datetime
+
+
+class ServicePaymentRequestOut(BaseModel):
+    id: int
+    requested_by_type: str
+    requested_by_user_id: int | None
+    requested_by_name: str | None = None
+    requested_by_vendor_id: int | None
+    requested_by_vendor_name: str | None = None
+    service_type: str | None
+    customer_charge_amount: float | None
+    settlement_service_amount: float | None
+    settlement_parts_amount: float | None
+    total_requested_amount: float | None
+    payment_type: str | None
+    payment_qr_code_path: str | None = None
+    approved_amount: float | None = None
+    remarks: str | None
+    status: str
+    processed_at: datetime | None
+    processed_by_user_id: int | None = None
+    processed_by_name: str | None = None
+    payment_transaction_id: int | None = None
+    created_at: datetime
+
+
+class ServicePaymentCompleteIn(BaseModel):
+    approved_amount: float
+    payment_type: str | None = None
+    remarks: str | None = None
+
+
+class ServiceNotificationOut(BaseModel):
+    id: int
+    service_request_id: int
+    title: str
+    message: str
+    notification_type: str
+    is_read: bool
+    created_at: datetime
+
+
+class ServiceAssignmentOut(BaseModel):
+    id: int
+    assignee_type: str
+    assignee_user_id: int | None
+    assignee_user_name: str | None = None
+    assignee_vendor_id: int | None
+    assignee_vendor_name: str | None = None
+    assigned_by: int | None
+    assigned_by_name: str | None = None
+    assigned_at: datetime
+    remarks: str | None
+    is_active: bool
+
+
+class ServiceOut(BaseModel):
+    id: int
+    request_no: str
+    request_date: date
+    query_type: str
+    customer_name: str
+    customer_mobile: str
+    customer_email: str | None
+    customer_address: str | None
+    model_details: str | None
+    problem_description: str | None
+    additional_remarks: str | None
+    status: str
+    status_date: datetime | None
+    source: str
+    created_by: int | None
+    created_by_name: str | None = None
+    complaint_id: int | None = None
+    order_id: int | None
+    order_item_id: int | None
+    order_no: str | None = None
+    serial_no: str | None
+    pcb_warranty_date: date | None = None
+    component_warranty_date: date | None = None
+    machine_warranty_date: date | None = None
+    service_type: str | None
+    warranty_status: str | None
+    assigned_engineer_id: int | None
+    assigned_engineer_name: str | None = None
+    assigned_vendor_id: int | None
+    assigned_vendor_name: str | None = None
+    requires_documents: bool
+    ask_for_documents: bool
+    document_request_sent_at: datetime | None
+    document_access_token: str | None
+    customer_identified_at: datetime | None
+    approved_at: datetime | None
+    completed_at: datetime | None
+    closed_at: datetime | None
+    created_at: datetime
+    updated_at: datetime
+    documents: list[ServiceDocumentOut] = []
+    assignments: list[ServiceAssignmentOut] = []
+    observations: list[ServiceObservationOut] = []
+    approvals: list[ServiceApprovalOut] = []
+    completions: list[ServiceCompletionOut] = []
+    payment_requests: list[ServicePaymentRequestOut] = []
+
+
+class ServiceListItem(BaseModel):
+    id: int
+    request_no: str
+    request_date: date
+    customer_name: str
+    customer_mobile: str
+    order_no: str | None = None
+    serial_no: str | None = None
+    status: str
+    service_type: str | None = None
+    warranty_status: str | None = None
+    assigned_engineer_name: str | None = None
+    assigned_vendor_name: str | None = None
+    requires_documents: bool
+    document_count: int = 0
+    created_at: datetime
+
+
+class ServiceListResponse(BaseModel):
+    items: list[ServiceListItem]
+    total: int
+    page: int
+    per_page: int
+
+
+class ServiceSummary(BaseModel):
+    new_requests: int
+    unassigned: int
+    assigned: int
+    pending_observation: int
+    pending_approval: int
+    approved: int
+    in_progress: int
+    payment_pending: int
+    completed: int
+    closed: int
+    unread_notifications: int = 0

@@ -1,0 +1,2 @@
+ALTER TABLE item_masters
+  ADD COLUMN serial_count INTEGER NOT NULL DEFAULT 1 AFTER mrp;
